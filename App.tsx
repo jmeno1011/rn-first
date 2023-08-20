@@ -8,7 +8,6 @@ import {
 import Title from './src/components/UI/Title/Title';
 import { Heading1, Heading2, Heading3, Heading4, Heading5 } from './src/components/UI/Typography';
 import { styled } from 'styled-components/native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Hr from './src/components/UI/Hr/Hr';
 
 interface HelloCompoProps {
@@ -30,7 +29,6 @@ interface TodoType {
 function App(): JSX.Element {
   const [todos, setTodos] = useState<TodoType[]>([]);
   const onClick = (id: number) => {
-    console.log('clicked');
     setTodos(prev => prev.map(todo => todo.id === id ? { ...todo, done: !todo.done } : todo))
   }
   useEffect(() => {
