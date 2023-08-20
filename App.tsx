@@ -121,6 +121,8 @@ interface TodoDoneButtonProps {
   done: boolean;
 }
 
+// TODO: done 상태에 따른 Text의 상태 변경하기 styled-component를 이용해서 
+
 const TodoDoneButton = styled.Pressable<TodoDoneButtonProps>`
   padding: 4px 8px;
   background-color: ${props => props.done ? "#028A0f" : "#BF4F74"};
