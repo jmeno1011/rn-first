@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button,
-  Pressable,
   SafeAreaView,
   ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 import Title from './src/components/UI/Title/Title';
@@ -61,7 +56,7 @@ function App(): JSX.Element {
             todo => (
               <TodoBlock key={todo.id}>
                 <TodoText done={todo.done}>{todo.title}</TodoText>
-                <TodoDoneButton onPress={()=>onClick(todo.id)} done={todo.done}>
+                <TodoDoneButton onPress={() => onClick(todo.id)} done={todo.done}>
                   <TodoDoneButtonText>{todo.done ? "O" : "X"}</TodoDoneButtonText>
                 </TodoDoneButton>
               </TodoBlock>
@@ -114,13 +109,13 @@ const TodoBlock = styled.View`
   border-color: silver;
 `
 
-interface TodoTextProps{
+interface TodoTextProps {
   done: boolean;
 }
 
 const TodoText = styled.Text<TodoTextProps>`
   font-size: 18px;
-  text-decoration: ${props=>props.done && "line-through"};
+  text-decoration: ${props => props.done && "line-through"};
 `
 
 interface TodoDoneButtonProps {
