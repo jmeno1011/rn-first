@@ -60,9 +60,9 @@ function App(): JSX.Element {
           todos.map(
             todo => (
               <TodoBlock key={todo.id}>
-                <TodoText>{todo.title}</TodoText>
+                <TodoText done={todo.done}>{todo.title}</TodoText>
                 <TodoDoneButton onPress={()=>onClick(todo.id)} done={todo.done}>
-                  <Text>{todo.done ? "O" : "X"}</Text>
+                  <TodoDoneButtonText>{todo.done ? "O" : "X"}</TodoDoneButtonText>
                 </TodoDoneButton>
               </TodoBlock>
             )
@@ -113,15 +113,19 @@ const TodoBlock = styled.View`
   border-bottom-width: 1px;
   border-color: silver;
 `
-const TodoText = styled.Text`
+
+interface TodoTextProps{
+  done: boolean;
+}
+
+const TodoText = styled.Text<TodoTextProps>`
   font-size: 18px;
+  text-decoration: ${props=>props.done && "line-through"};
 `
 
 interface TodoDoneButtonProps {
   done: boolean;
 }
-
-// TODO: done 상태에 따른 Text의 상태 변경하기 styled-component를 이용해서 
 
 const TodoDoneButton = styled.Pressable<TodoDoneButtonProps>`
   padding: 4px 8px;
@@ -129,4 +133,7 @@ const TodoDoneButton = styled.Pressable<TodoDoneButtonProps>`
   border-width: 1px;
   border-radius: 8px;
   border-color: silver;
+`
+const TodoDoneButtonText = styled.Text`
+  color: white;
 `
